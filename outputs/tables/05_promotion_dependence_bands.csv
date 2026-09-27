@@ -1,0 +1,5 @@
+promotion_share_band,purchase_customers,spend_customers,purchase_customer_share,spend_customer_share
+<25%,1,47,0.0004,0.0188
+25–50%,23,1189,0.0092,0.4756
+50–75%,366,1211,0.1464,0.4844
+75–100%,2110,53,0.844,0.0212

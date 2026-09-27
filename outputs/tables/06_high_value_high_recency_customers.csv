@@ -1,0 +1,19 @@
+customer_id,total_spend,recency_days,purchase_frequency,average_basket_value,active_months,promotion_purchase_share,high_value_p80,high_recency_p80,high_value_high_recency,high_value_p90,high_recency_p90,strict_high_value_high_recency,value_recency_group
+149,11920.93,60,11.31578947368421,55.44618604651163,19,0.9395348837209302,True,True,True,True,False,False,High value / High recency
+232,12695.57,39,29.904761904761905,20.215875796178345,21,0.7181528662420382,True,True,True,True,False,False,High value / High recency
+472,8295.58,48,4.7,88.25085106382978,20,0.7978723404255319,True,True,True,True,False,False,High value / High recency
+492,7148.28,78,6.5,61.09641025641026,18,0.9658119658119658,True,True,True,False,True,False,High value / High recency
+942,5890.14,31,10.75,27.396,20,0.6790697674418604,True,True,True,False,False,False,High value / High recency
+1060,6096.93,39,2.782608695652174,95.26453125,23,0.921875,True,True,True,False,False,False,High value / High recency
+1091,5617.4,45,6.105263157894737,48.425862068965515,19,0.8103448275862069,True,True,True,False,False,False,High value / High recency
+1263,5257.44,29,5.478260869565218,41.72571428571428,23,0.9126984126984127,True,True,True,False,False,False,High value / High recency
+1305,7552.93,30,18.65,20.249142091152816,20,0.8552278820375335,True,True,True,True,False,False,High value / High recency
+1396,7177.06,91,11.45,31.340873362445414,20,0.9301310043668122,True,True,True,False,True,False,High value / High recency
+1648,5250.36,27,5.8,45.26172413793103,20,0.853448275862069,True,True,True,False,False,False,High value / High recency
+1828,5813.77,141,6.615384615384615,67.60197674418605,13,0.872093023255814,True,True,True,False,True,False,High value / High recency
+1959,5592.54,40,6.117647058823529,53.77442307692308,17,0.8461538461538461,True,True,True,False,False,False,High value / High recency
+1974,5266.0,201,11.647058823529411,26.595959595959595,17,0.9141414141414141,True,True,True,False,True,False,High value / High recency
+2097,8823.83,66,9.181818181818182,43.68232673267327,22,0.8910891089108911,True,True,True,True,True,True,High value / High recency
+2294,8381.66,29,8.454545454545455,45.06268817204301,22,0.8548387096774194,True,True,True,True,False,False,High value / High recency
+2318,10685.72,89,18.3,29.195956284153006,20,0.7049180327868853,True,True,True,True,True,True,High value / High recency
+2374,6249.35,28,3.5217391304347827,77.15246913580246,23,0.9629629629629629,True,True,True,False,False,False,High value / High recency

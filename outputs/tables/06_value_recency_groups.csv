@@ -1,0 +1,5 @@
+value_recency_group,customers,historical_sales,median_total_spend,median_recency_days,median_purchase_frequency,median_average_basket_value,median_active_months,customer_share,historical_sales_share
+High value / High recency,18,133715.49,6698.8150000000005,42.5,7.534965034965035,45.16220615498702,20.0,0.0072,0.0165952742977866
+High value / Lower recency,482,4140468.73,7500.155,2.0,9.020833333333332,39.226949548855636,22.0,0.1928,0.5138687693980566
+Lower value / High recency,491,535181.02,693.86,61.0,2.2,24.901176470588236,13.0,0.1964,0.06642069535750285
+Lower value / Lower recency,1509,3248078.56,1978.83,5.0,3.6470588235294117,25.165664335664335,20.0,0.6036,0.4031152609466541

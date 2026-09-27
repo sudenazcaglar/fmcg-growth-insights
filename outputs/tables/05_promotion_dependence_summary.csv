@@ -1,0 +1,10 @@
+metric,value
+Mean promotion purchase share,0.8449587041759925
+Median promotion purchase share,0.8655688081684287
+P10 promotion purchase share,0.7058204334365326
+P90 promotion purchase share,0.9605263157894737
+Mean promotion spend share,0.5011226339143444
+Median promotion spend share,0.5021016967254017
+P10 promotion spend share,0.354029397848951
+P90 promotion spend share,0.6474019797116862
+Purchase vs spend share Spearman correlation,0.345275760971988

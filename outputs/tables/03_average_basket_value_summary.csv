@@ -1,0 +1,14 @@
+metric,value
+Mean average basket value,31.69007054483086
+Median average basket value,27.469970163503998
+P10 average basket value,12.59399344978166
+P25 average basket value,18.403668842625265
+P75 average basket value,40.61927687261955
+P90 average basket value,55.454149531412696
+P95 average basket value,67.60126210251543
+P99 average basket value,99.63605372365338
+Interquartile range,22.215608029994286
+Coefficient of variation,0.6024590882212192
+P90 / P10 ratio,4.40322204013645
+Minimum,2.3875
+Maximum,165.82931034482758

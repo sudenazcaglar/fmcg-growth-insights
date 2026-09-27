@@ -1,0 +1,13 @@
+metric,value
+Mean category diversity,114.6192
+Median category diversity,117.0
+P10 category diversity,52.0
+P25 category diversity,83.0
+P75 category diversity,149.0
+P90 category diversity,172.0999999999999
+P95 category diversity,187.0
+P99 category diversity,207.0
+Interquartile range,66.0
+Minimum category diversity,3.0
+Maximum category diversity,242.0
+Diversity vs sales Spearman correlation,0.9217038700210052

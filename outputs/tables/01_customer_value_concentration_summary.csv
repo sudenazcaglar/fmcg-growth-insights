@@ -1,0 +1,10 @@
+metric,value
+Total customers,2500.0
+Total sales,8057443.8
+Mean customer sales,3222.97752
+Median customer sales,2157.75
+Top 1% sales share,0.06014339684255694
+Top 5% sales share,0.2106745752294295
+Top 10% sales share,0.34291385935574265
+Top 20% sales share,0.5304640436958432
+Gini coefficient,0.5027882789368012

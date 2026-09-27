@@ -1,0 +1,6 @@
+measure,customers,customer_share
+Promo baskets >= 50%,2476,0.9904
+Promo baskets >= 75%,2110,0.844
+Promo spend >= 50%,1264,0.5056
+Promo spend >= 75%,53,0.0212
+Both shares >= 50%,1261,0.5044
