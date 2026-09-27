@@ -1,0 +1,16 @@
+feature_1,feature_2,spearman_correlation,absolute_correlation
+total_spend,category_diversity,0.9217038700210052,0.9217038700210052
+purchase_frequency,total_spend,0.7956253721919859,0.7956253721919859
+purchase_frequency,category_diversity,0.7310139479844191,0.7310139479844191
+average_basket_value,promotion_purchase_share,0.506193685537542,0.506193685537542
+recency_days,purchase_frequency,-0.49783212867669757,0.49783212867669757
+recency_days,total_spend,-0.48702480752985916,0.48702480752985916
+total_spend,average_basket_value,0.45184717289358495,0.45184717289358495
+recency_days,category_diversity,-0.4458740601004935,0.4458740601004935
+average_basket_value,category_diversity,0.4228710215578364,0.4228710215578364
+total_spend,promotion_purchase_share,0.1992668688481022,0.1992668688481022
+category_diversity,promotion_purchase_share,0.17365392476222785,0.17365392476222785
+purchase_frequency,promotion_purchase_share,-0.08508568338005633,0.08508568338005633
+purchase_frequency,average_basket_value,-0.07857747158264829,0.07857747158264829
+recency_days,average_basket_value,-0.024332732601684746,0.024332732601684746
+recency_days,promotion_purchase_share,0.01083359723520701,0.01083359723520701

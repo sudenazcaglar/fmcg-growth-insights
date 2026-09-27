@@ -1,0 +1,7 @@
+feature,scaled_mean,scaled_std
+recency_days,9.521272659185343e-17,1.0
+purchase_frequency,-6.124878382252064e-16,0.9999999999999999
+total_spend,-6.110667527536862e-17,1.0
+average_basket_value,-1.9895196601282806e-16,1.0
+category_diversity,-1.4210854715202004e-16,0.9999999999999999
+promotion_purchase_share,1.3116618902131448e-15,1.0
