@@ -1,0 +1,17 @@
+check,value
+Customer rows,2500.0
+Promotion rows,2500.0
+Segment rows,2500.0
+Customer-category rows,286548.0
+Customer sales total,8057443.799999999
+Basket-classified sales total,8057443.8
+Category sales total,8057443.800000001
+Segment sales total,8057443.8
+Category promotional-line sales,4108958.96
+Customer promotional-line sales,4108958.96
+Basket count mismatches,0.0
+Customer sales mismatches,0.0
+Promotion purchase share mismatches,0.0
+Promotion spend share mismatches,0.0
+Promo ABV structural nulls,0.0
+Nonpromo ABV structural nulls,116.0

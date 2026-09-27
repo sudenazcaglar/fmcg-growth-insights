@@ -1,0 +1,3 @@
+test,statistic,p_value,effect_size,effect_size_name,executed
+Kruskal-Wallis: average_items_per_basket,939.1573924672637,1.1602816033365518e-204,0.3753133329864893,epsilon_squared,True
+Kruskal-Wallis: promotion_spend_share,70.65404952736844,4.546404606504542e-16,0.027494613346963733,epsilon_squared,True

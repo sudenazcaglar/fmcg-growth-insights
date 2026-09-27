@@ -1,0 +1,9 @@
+metric,value
+Segments,3
+Top-category levels,143
+Expected cells,429
+Minimum expected count,0.2364
+Expected cells below 1,240
+Expected cells below 5,366
+Share of expected cells below 5,0.8531468531468531
+Assumptions adequate,False

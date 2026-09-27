@@ -1,0 +1,4 @@
+segment_id,segment_name,category_sales,category_promo_line_sales,total_sales,promo_line_sales,sales_difference,promo_difference
+1,High-Value Frequent Shoppers,5923641.65,3041736.11,5923641.65,3041736.11,0.0,0.0
+2,Large-Basket Occasional Shoppers,1731383.6400000001,880955.49,1731383.64,880955.49,2.3283064365386963e-10,0.0
+3,Low-Value Low-Engagement Shoppers,402418.51,186267.36,402418.51,186267.36,0.0,0.0

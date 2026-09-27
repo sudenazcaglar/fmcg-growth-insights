@@ -1,0 +1,4 @@
+segment_id,segment_name,customers,total_sales,total_transactions,promo_baskets,nonpromo_baskets,promo_basket_sales,nonpromo_basket_sales,customer_share,sales_share
+1,High-Value Frequent Shoppers,1007,5923641.65,199331,167562,31769,5634192.78,289448.87,0.4028,0.7351762912699435
+2,Large-Basket Occasional Shoppers,902,1731383.64,47089,42008,5081,1674471.92,56911.72,0.3608,0.21488001442839727
+3,Low-Value Low-Engagement Shoppers,591,402418.51,29469,21292,8177,343980.81,58437.7,0.2364,0.0499436943016593
