@@ -1,0 +1,9 @@
+candidate_finding,source,phase9_status,final_insight_id,selection_rationale
+Customer value concentration,Consumer behavior analysis,Selected / integrated,1,Strengthened by final segment evidence showing that 40.28% of customers contribute 73.52% of sales.
+Purchase frequency strongly differentiates value,Consumer behavior analysis,Integrated,1,Used as behavioral evidence for the retention priority rather than retained as a separate insight.
+Category diversity is strongly associated with value,Consumer behavior analysis,Supporting evidence,1,Useful engagement context but not selected as a standalone final business decision.
+Promotion exposure and promotion sales dependence are distinct,Consumer behavior analysis,Selected / integrated,3,Confirmed by segment-level promotion analysis and small promotion-spend-share effect size.
+Historical high-value high-recency screening pocket,Consumer behavior analysis,Not selected,,"Only 18 customers (0.72%) met the P80/P80 screening definition, so it remains a narrow tactical finding rather than one of the three portfolio-level insights."
+Promotion exposure should not be treated as promotion sales dependence,Promotion analysis,Selected,3,Directly supports a differentiated promotion measurement and targeting decision.
+Shopping-occasion size is a stronger segment differentiator than promotion spend share,Promotion analysis,Selected / integrated,2,Supports the frequency-growth interpretation for Large-Basket Occasional Shoppers.
+Major-category promotion intensity is relatively consistent across segments,Promotion analysis,Supporting evidence,3,Useful context for category-specific targeting but less decision-critical than the exposure-versus-dependence distinction.
