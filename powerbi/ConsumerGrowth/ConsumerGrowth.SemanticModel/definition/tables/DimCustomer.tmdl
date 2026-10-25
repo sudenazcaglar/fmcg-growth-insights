@@ -1,0 +1,251 @@
+table DimCustomer
+	lineageTag: 55913f06-61bc-4e7c-9b57-7022aa135829
+
+	column customer_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bc67d581-4306-45ba-bc29-83bebaf7f20c
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_spend
+		dataType: double
+		isHidden
+		lineageTag: 282814fb-bbcd-4a01-87f4-e50af3caf5e4
+		summarizeBy: none
+		sourceColumn: total_spend
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_transactions
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 21ad6b3d-33cc-4886-b688-1c9977152443
+		summarizeBy: none
+		sourceColumn: total_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_basket_value
+		dataType: double
+		isHidden
+		lineageTag: c3dd605b-6d9d-48bf-871b-630c2cbdd19b
+		summarizeBy: none
+		sourceColumn: average_basket_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column active_months
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4c4e258b-c341-4d87-9f79-6823f036ad50
+		summarizeBy: none
+		sourceColumn: active_months
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_frequency
+		dataType: double
+		isHidden
+		lineageTag: 1896d44e-c498-4c2b-9d06-9cd7d410d975
+		summarizeBy: none
+		sourceColumn: purchase_frequency
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column recency_days
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 08e5785f-fa23-4d75-840d-978c6412b740
+		summarizeBy: none
+		sourceColumn: recency_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_items_per_basket
+		dataType: double
+		isHidden
+		lineageTag: 6697fe46-48dc-4328-87fe-eaa5c51ec359
+		summarizeBy: none
+		sourceColumn: average_items_per_basket
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column category_diversity
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e230e27a-b11f-489d-accc-6148d63eef85
+		summarizeBy: none
+		sourceColumn: category_diversity
+
+		annotation SummarizationSetBy = Automatic
+
+	column promotion_purchase_share
+		dataType: double
+		isHidden
+		lineageTag: 53b71c4a-fce7-4af6-9b91-7394b434cb65
+		summarizeBy: none
+		sourceColumn: promotion_purchase_share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column promotion_spend_share
+		dataType: double
+		isHidden
+		lineageTag: 2bf42ea4-7c36-4296-b365-dc0ed7d1d0e9
+		summarizeBy: none
+		sourceColumn: promotion_spend_share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column top_category
+		dataType: string
+		isHidden
+		lineageTag: 480ab0fb-647c-4e5f-9edd-a8d6ac9eb514
+		summarizeBy: none
+		sourceColumn: top_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column top_category_share
+		dataType: double
+		isHidden
+		lineageTag: 9f4af098-6dd0-444c-82d6-bae45651fe6b
+		summarizeBy: none
+		sourceColumn: top_category_share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column segment_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7b5f768e-2174-499c-a7b2-95a974e81bca
+		summarizeBy: none
+		sourceColumn: segment_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment_name
+		dataType: string
+		lineageTag: 04acc52b-8a0f-4298-8fd3-00c01aad3492
+		summarizeBy: none
+		sourceColumn: segment_name
+		sortByColumn: segment_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column model_version
+		dataType: string
+		isHidden
+		lineageTag: 836f8f41-1ff1-494b-8a3f-72d4f305f6af
+		summarizeBy: none
+		sourceColumn: model_version
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_baskets
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: be4bb866-3821-4ec0-8a2f-420fb80450fb
+		summarizeBy: none
+		sourceColumn: promo_baskets
+
+		annotation SummarizationSetBy = Automatic
+
+	column nonpromo_baskets
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9d9025ed-5930-47b2-aa99-0e22325cf876
+		summarizeBy: none
+		sourceColumn: nonpromo_baskets
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_sales
+		dataType: double
+		isHidden
+		lineageTag: 7c570073-4dad-4350-830a-fa2b41c7a008
+		summarizeBy: none
+		sourceColumn: promo_sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nonpromo_sales
+		dataType: double
+		isHidden
+		lineageTag: 09d1eea8-1dfa-4fc0-ab93-446c72b88aa9
+		summarizeBy: none
+		sourceColumn: nonpromo_sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column promo_average_basket_value
+		dataType: double
+		isHidden
+		lineageTag: 8c3bfac5-3784-411c-9fbe-64a407a33ff0
+		summarizeBy: none
+		sourceColumn: promo_average_basket_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column nonpromo_average_basket_value
+		dataType: double
+		isHidden
+		lineageTag: 0491c882-cd1d-431a-ae51-cabdfad34828
+		summarizeBy: none
+		sourceColumn: nonpromo_average_basket_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DimCustomer = m
+		mode: import
+		source =
+				let
+				    Customers = fnAnalyticsTable("customer_metrics", {{"customer_id", Int64.Type}, {"total_spend", type number}, {"total_transactions", Int64.Type}, {"average_basket_value", type number}, {"active_months", Int64.Type}, {"purchase_frequency", type number}, {"recency_days", Int64.Type}, {"average_items_per_basket", type number}, {"category_diversity", Int64.Type}, {"promotion_purchase_share", type number}, {"promotion_spend_share", type number}, {"top_category", type text}, {"top_category_share", type number}}),
+				    JoinSegments = Table.NestedJoin(Customers, {"customer_id"}, StgCustomerSegments, {"customer_id"}, "Segment", JoinKind.LeftOuter),
+				    ExpandSegments = Table.ExpandTableColumn(JoinSegments, "Segment", {"segment_id", "segment_name", "model_version"}),
+				    JoinPromotion = Table.NestedJoin(ExpandSegments, {"customer_id"}, StgPromotionMetrics, {"customer_id"}, "Promotion", JoinKind.LeftOuter),
+				    Result = Table.ExpandTableColumn(JoinPromotion, "Promotion", {"promo_baskets", "nonpromo_baskets", "promo_sales", "nonpromo_sales", "promo_average_basket_value", "nonpromo_average_basket_value"})
+				in
+				    Result
+
+	annotation PBI_ResultType = Table
+

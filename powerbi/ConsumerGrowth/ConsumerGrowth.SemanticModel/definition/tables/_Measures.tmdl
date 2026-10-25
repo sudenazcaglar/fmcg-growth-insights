@@ -1,0 +1,300 @@
+table _Measures
+	lineageTag: 399468ec-c512-4499-932b-62c8a991efac
+
+	/// Retailer sales value on valid lines; responds to relative month and segment, not category.
+	measure 'Total Sales' = SUM ( FactMonthlyActivity[monthly_sales] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 01 Core
+		lineageTag: 1da1b256-edca-5fa9-b56f-56a7cd78e107
+
+	/// Full observation-period customer population in the selected segment; month and category do not filter this dimension.
+	measure 'Total Customers' = DISTINCTCOUNT ( DimCustomer[customer_id] )
+		formatString: #,##0
+		displayFolder: 01 Core
+		lineageTag: d41910c1-7dc2-550a-9893-97a3fa7837cc
+
+	/// Customers with activity in the selected relative months and segment.
+	measure 'Active Customers' = DISTINCTCOUNT ( FactMonthlyActivity[customer_id] )
+		formatString: #,##0
+		displayFolder: 01 Core
+		lineageTag: 112a7252-d9cc-5ecb-a3ec-cda4e7c29d16
+
+	/// Distinct baskets aggregated from mutually exclusive customer-month groups.
+	measure 'Total Transactions' = SUM ( FactMonthlyActivity[monthly_transactions] )
+		formatString: #,##0
+		displayFolder: 01 Core
+		lineageTag: 0724b151-0597-5900-a106-d2c57ad190fb
+
+	/// Basket-weighted value: total sales divided by total baskets; not the mean of customer basket averages.
+	measure 'Average Basket Value' = DIVIDE ( [Total Sales], [Total Transactions] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 01 Core
+		lineageTag: ac484c58-0fec-5793-bad1-fd3669e04f39
+
+	/// Selected-period sales per active customer.
+	measure 'Revenue per Customer' = DIVIDE ( [Total Sales], [Active Customers] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 01 Core
+		lineageTag: 2f13a1b2-2273-58ac-b075-fdbde28ca368
+
+	/// Sales of promotional transaction lines only; not entire promotional baskets.
+	measure 'Promotion Sales' = SUM ( FactMonthlyActivity[monthly_promo_sales] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 01 Core
+		lineageTag: c5692cae-e802-5401-83ce-7c86fd84518b
+
+	/// Weighted promotional-line sales share.
+	measure 'Promotion Sales %' = DIVIDE ( [Promotion Sales], [Total Sales] )
+		formatString: 0.00%
+		displayFolder: 01 Core
+		lineageTag: 45aec594-b406-54b4-bd26-d49b20f4b19d
+
+	/// Share of sales across all segments, retaining the relative-month filter. Segment selections do not rebase the denominator.
+	measure 'Segment Revenue %' = DIVIDE ( [Total Sales], CALCULATE ( [Total Sales], REMOVEFILTERS ( DimCustomer[segment_id], DimCustomer[segment_name] ) ) )
+		formatString: 0.00%
+		displayFolder: 01 Core
+		lineageTag: 69cdcc13-d505-522e-82ee-c90b2c80e256
+
+	/// Full-period sales in the selected category and segment. No month grain exists in this fact.
+	measure 'Category Sales' = SUM ( FactCustomerCategory[category_spend] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 04 Categories
+		lineageTag: 80ac2729-5f91-50bb-9843-fbe5fb188a0e
+
+	/// Sales of non-promotional lines in the selected period.
+	measure 'Non-Promotion Sales' = [Total Sales] - [Promotion Sales]
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 01 Core
+		lineageTag: a30367f6-1da7-587c-9e32-97afd4e2f41b
+
+	/// Weighted proportion of baskets containing any promotional line.
+	measure 'Promotion Basket Exposure %' = DIVIDE ( SUM ( FactMonthlyActivity[monthly_promo_transactions] ), [Total Transactions] )
+		formatString: 0.00%
+		displayFolder: 01 Core
+		lineageTag: 759de8f6-162a-52dc-83c3-c1d2311bdfb8
+
+	/// Customer population share across all segments; full observation period.
+	measure 'Customer Base %' = DIVIDE ( [Total Customers], CALCULATE ( [Total Customers], REMOVEFILTERS ( DimCustomer[segment_id], DimCustomer[segment_name] ) ) )
+		formatString: 0.00%
+		displayFolder: 02 Segment profiles
+		lineageTag: 96046da4-5faa-523a-af08-83acbd5aeeab
+
+	/// Compatibility alias for the measure introduced during the guided build.
+	measure 'Segment Customer %' = [Customer Base %]
+		formatString: 0.00%
+		displayFolder: 02 Segment profiles
+		lineageTag: 8aae4fec-9477-5c6c-b03e-c00e48e9ca71
+
+	/// Mean full-period retailer sales attributed to each customer. Full observation period; not affected by relative-month or category selection.
+	measure 'Average Customer Spend' = AVERAGE ( DimCustomer[total_spend] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 02 Segment profiles
+		lineageTag: 18a9195d-6b8d-5832-9d28-44c9403a0390
+
+	/// Customer mean of baskets / active months; not baskets divided by all 24 months. Full observation period; not affected by relative-month or category selection.
+	measure 'Average Purchase Frequency' = AVERAGE ( DimCustomer[purchase_frequency] )
+		formatString: 0.00
+		displayFolder: 02 Segment profiles
+		lineageTag: 81d79275-2ba1-5616-b3dc-e1609b1f4586
+
+	/// Mean days since last valid purchase at the dataset end; never relative to today. Full observation period; not affected by relative-month or category selection.
+	measure 'Average Recency Days' = AVERAGE ( DimCustomer[recency_days] )
+		formatString: 0.0
+		displayFolder: 02 Segment profiles
+		lineageTag: 0f9aca6a-fd51-5869-9e86-e43aa719b216
+
+	/// Unweighted mean of each customer average basket value. Reconciles to the analytical segment profile (40.07 for Large-Basket Occasional Shoppers). Full observation period; not affected by relative-month or category selection.
+	measure 'Mean Customer Basket Value' = AVERAGE ( DimCustomer[average_basket_value] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 02 Segment profiles
+		lineageTag: a82e85e1-8655-585b-bfbf-00fe4b0dbdb2
+
+	/// Mean distinct purchased categories per customer; unmodified analytical definition. Full observation period; not affected by relative-month or category selection.
+	measure 'Average Category Diversity' = AVERAGE ( DimCustomer[category_diversity] )
+		formatString: 0.0
+		displayFolder: 02 Segment profiles
+		lineageTag: 906fccbc-f24e-57fa-8e84-bb555d23cfd2
+
+	/// Mean customer items per basket; gasoline quantity excluded upstream. Full observation period; not affected by relative-month or category selection.
+	measure 'Average Items per Basket' = AVERAGE ( DimCustomer[average_items_per_basket] )
+		formatString: 0.00
+		displayFolder: 02 Segment profiles
+		lineageTag: 27ba41b8-c785-5f9b-b9fe-da1b8464b9bc
+
+	/// Unweighted customer mean: promotional baskets / baskets. Full observation period; not affected by relative-month or category selection.
+	measure 'Average Promotion Purchase Share' = AVERAGE ( DimCustomer[promotion_purchase_share] )
+		formatString: 0.00%
+		displayFolder: 02 Segment profiles
+		lineageTag: 8fa330b3-8050-5778-aafd-8ca1f31f9382
+
+	/// Unweighted customer mean: promotional-line sales / sales. Full observation period; not affected by relative-month or category selection.
+	measure 'Average Promotion Spend Share' = AVERAGE ( DimCustomer[promotion_spend_share] )
+		formatString: 0.00%
+		displayFolder: 02 Segment profiles
+		lineageTag: 49bb52d2-346b-59e8-929b-b0e7c298abed
+
+	/// Sales across all 24 relative months in the selected segment.
+	measure 'All Period Sales' = CALCULATE ( [Total Sales], REMOVEFILTERS ( DimMonth ) )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 02 Segment profiles
+		lineageTag: 4435dc61-aca6-5244-b429-47c76b076a28
+
+	/// Full-period segment sales contribution; denominator retains the full segment population.
+	measure 'All Period Segment Revenue %' = DIVIDE ( [All Period Sales], CALCULATE ( [All Period Sales], REMOVEFILTERS ( DimCustomer[segment_id], DimCustomer[segment_name] ) ) )
+		formatString: 0.00%
+		displayFolder: 02 Segment profiles
+		lineageTag: 41c56faf-2c5c-5a3b-97bc-451266f6f7c3
+
+	/// Baskets containing at least one promotional line. Full observation period.
+	measure 'Promotional Basket Count' = SUM ( DimCustomer[promo_baskets] )
+		formatString: #,##0
+		displayFolder: 03 Promotion baskets
+		lineageTag: f440c92c-6bfc-5e28-8d95-d127a573c7e9
+
+	/// Baskets with no promotional line. Full observation period.
+	measure 'Non-Promotional Basket Count' = SUM ( DimCustomer[nonpromo_baskets] )
+		formatString: #,##0
+		displayFolder: 03 Promotion baskets
+		lineageTag: 6f682c5e-a49b-52b7-85ba-7b48ede6a3f8
+
+	/// Entire sales of baskets containing at least one promotional line. Full observation period.
+	measure 'Promotional Basket Sales' = SUM ( DimCustomer[promo_sales] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 03 Promotion baskets
+		lineageTag: d2802064-8aef-5392-938e-80e0c281e49b
+
+	/// Entire sales of baskets containing no promotional line. Full observation period.
+	measure 'Non-Promotional Basket Sales' = SUM ( DimCustomer[nonpromo_sales] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 03 Promotion baskets
+		lineageTag: 9983888a-eb48-5914-a387-5ccdd1523d0b
+
+	/// Weighted mean entire-basket sales for promotional baskets; descriptive, not causal lift. Full observation period.
+	measure 'Promotional Basket Value' = DIVIDE ( [Promotional Basket Sales], [Promotional Basket Count] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 03 Promotion baskets
+		lineageTag: 7ae94040-08f9-56a1-ae4a-cad1c6c0ee9b
+
+	/// Weighted mean entire-basket sales for non-promotional baskets; blank when denominator is zero. Full observation period.
+	measure 'Non-Promotional Basket Value' = DIVIDE ( [Non-Promotional Basket Sales], [Non-Promotional Basket Count] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 03 Promotion baskets
+		lineageTag: 79f04e65-b4af-5ffc-b81a-8898a26c3ff8
+
+	/// Full-period promotional-line sales in the selected category and segment.
+	measure 'Category Promotion Sales' = SUM ( FactCustomerCategory[category_promo_spend] )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 04 Categories
+		lineageTag: be89f425-54a8-5e91-86a7-c0725df0a3af
+
+	/// Weighted full-period promotional-line sales share by category and segment.
+	measure 'Category Promotion Sales %' = DIVIDE ( [Category Promotion Sales], [Category Sales] )
+		formatString: 0.00%
+		displayFolder: 04 Categories
+		lineageTag: 29009ce9-bb57-5bf8-a5cc-7a64eb6c1764
+
+	/// Customers who purchased the selected category; full observation period.
+	measure 'Category Customers' = DISTINCTCOUNT ( FactCustomerCategory[customer_id] )
+		formatString: #,##0
+		displayFolder: 04 Categories
+		lineageTag: eeb5801c-6092-58b8-87e2-2cdf158aad45
+
+	/// Category sales excluding COUPON/MISC ITEMS and (CORP USE ONLY); exclusion applies only where this measure or equivalent visual filter is used.
+	measure 'Merchandise Sales' = CALCULATE ( [Category Sales], KEEPFILTERS ( DimCategory[is_business_merchandise] = TRUE () ) )
+		formatString: $#,##0.00;($#,##0.00);$0.00
+		displayFolder: 04 Categories
+		lineageTag: 8d340044-d7cd-5557-9a9d-425fecddf296
+
+	/// Category contribution retaining merchandise and segment scope. Not a distinct basket share.
+	measure 'Category Sales Share %' = DIVIDE ( [Category Sales], CALCULATE ( [Category Sales], REMOVEFILTERS ( DimCategory[category] ) ) )
+		formatString: 0.00%
+		displayFolder: 04 Categories
+		lineageTag: fa3e7b4c-6549-56d3-ba8e-3a11c61a6d1a
+
+	/// Stable segment palette shared by all pages.
+	measure 'Segment Color' = SWITCH ( SELECTEDVALUE ( DimCustomer[segment_id] ), 1, "#2563EB", 2, "#7C3AED", 3, "#0F9488", "#2563EB" )
+		displayFolder: 05 Display
+		lineageTag: bde5f451-2cfc-517d-811d-c11ca28c52a0
+
+	/// Relative-time filter summary; no calendar-year claim.
+	measure 'Selected Period Label' = IF ( COUNTROWS ( VALUES ( DimMonth[relative_month_index] ) ) = 24, "All 24 relative months", FORMAT ( COUNTROWS ( VALUES ( DimMonth[relative_month_index] ) ), "0" ) & " relative months selected" )
+		displayFolder: 05 Display
+		lineageTag: 86f27329-003a-530f-aae8-e380d6db50cb
+
+	/// Expected unfiltered: 2500.
+	measure 'QA Customer Rows' = COUNTROWS ( DimCustomer )
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: 33fd02e6-b902-57ae-8a03-e641c592f713
+
+	/// Expected unfiltered: 45298.
+	measure 'QA Monthly Rows' = COUNTROWS ( FactMonthlyActivity )
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: a6af8ad4-32b9-5ef2-bb20-dc737b9df2d1
+
+	/// Expected unfiltered: 286548.
+	measure 'QA Customer Category Rows' = COUNTROWS ( FactCustomerCategory )
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: 566d99f6-6671-59e5-b8be-ff5e4526cbe9
+
+	/// Expected 0 without category filters.
+	measure 'QA Customer Sales Difference' = [All Period Sales] - SUM ( DimCustomer[total_spend] )
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: a5ad892b-7324-5743-86ca-cc2e0cf5ba0f
+
+	/// Expected 0 without category/merchandise filters.
+	measure 'QA Category Sales Difference' = [Category Sales] - [All Period Sales]
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: 07d2e841-0717-5cf7-9251-bbc32d11bf08
+
+	/// Expected 0.
+	measure 'QA Basket Sales Difference' = [Promotional Basket Sales] + [Non-Promotional Basket Sales] - [All Period Sales]
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: c7d96f4b-bde7-5bc9-a99a-3fedd3482050
+
+	/// Expected 0 without category/merchandise filters.
+	measure 'QA Promotion Sales Difference' = [Category Promotion Sales] - CALCULATE ( [Promotion Sales], REMOVEFILTERS ( DimMonth ) )
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: b5d53ab6-65cd-5aee-b3f9-432a8b7b1f0e
+
+	/// Expected 0 unfiltered.
+	measure 'QA Orphan Monthly Customers' = COUNTROWS ( EXCEPT ( VALUES ( FactMonthlyActivity[customer_id] ), VALUES ( DimCustomer[customer_id] ) ) )
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: 260eb0d8-bef9-5a34-8c44-bd727d93047f
+
+	/// Expected 0 unfiltered.
+	measure 'QA Orphan Category Customers' = COUNTROWS ( EXCEPT ( VALUES ( FactCustomerCategory[customer_id] ), VALUES ( DimCustomer[customer_id] ) ) )
+		formatString: 0.00
+		displayFolder: 99 Validation
+		lineageTag: b00abb0e-0a84-5e9c-929e-54b366b76f82
+
+	column measure_holder
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 49e0f9f6-e107-4fdb-af6a-295c49e6b2cc
+		summarizeBy: sum
+		sourceColumn: measure_holder
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlSKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [measure_holder = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"measure_holder", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

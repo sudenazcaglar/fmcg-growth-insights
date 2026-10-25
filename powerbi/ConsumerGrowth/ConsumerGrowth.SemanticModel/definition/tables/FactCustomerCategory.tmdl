@@ -1,0 +1,117 @@
+table FactCustomerCategory
+	lineageTag: b7911f80-91e1-451d-b796-7f143a3d412f
+
+	column customer_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8f1fe873-b23f-4577-94ae-3b22c8aa7f45
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		isHidden
+		lineageTag: b429ea15-3c14-43e0-8cdb-448fb69b503d
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_spend
+		dataType: double
+		isHidden
+		lineageTag: b30af500-fa9e-4e9c-92a9-0b6c4406d776
+		summarizeBy: none
+		sourceColumn: category_spend
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column category_transactions
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7b1d31d0-89e0-49cb-851d-1e781a3c3d57
+		summarizeBy: none
+		sourceColumn: category_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_quantity
+		dataType: double
+		isHidden
+		lineageTag: f380a9a0-4221-4e80-876c-f1c05bc411ea
+		summarizeBy: none
+		sourceColumn: category_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column category_spend_share
+		dataType: double
+		isHidden
+		lineageTag: e652d831-b145-4557-a9c5-d1c6f45871fb
+		summarizeBy: none
+		sourceColumn: category_spend_share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column category_promo_spend
+		dataType: double
+		isHidden
+		lineageTag: a4feb1c8-4649-4796-8fed-f7ac7dbdaa08
+		summarizeBy: none
+		sourceColumn: category_promo_spend
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column category_promo_transactions
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: dfa7d156-efdb-4c85-8a23-c75b3efdd874
+		summarizeBy: none
+		sourceColumn: category_promo_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_promo_spend_share
+		dataType: double
+		isHidden
+		lineageTag: e45460cc-b833-4fa1-a2c6-5b39b2a77cc5
+		summarizeBy: none
+		sourceColumn: category_promo_spend_share
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column category_rank
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 39c2e74a-50f0-42bb-8b9f-c820baf2b536
+		summarizeBy: none
+		sourceColumn: category_rank
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactCustomerCategory = m
+		mode: import
+		source = fnAnalyticsTable("customer_category_metrics", {{"customer_id", Int64.Type}, {"category", type text}, {"category_spend", type number}, {"category_transactions", Int64.Type}, {"category_quantity", type number}, {"category_spend_share", type number}, {"category_promo_spend", type number}, {"category_promo_transactions", Int64.Type}, {"category_promo_spend_share", type number}, {"category_rank", Int64.Type}})
+
+	annotation PBI_ResultType = Exception
+

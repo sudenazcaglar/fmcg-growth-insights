@@ -1,0 +1,100 @@
+table FactMonthlyActivity
+	lineageTag: a16bcadc-c312-4d1b-99f5-be97aae51aa7
+
+	column customer_id
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 549892d8-c26e-4dc2-8fd7-cb6ffe744faf
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 846e1be9-68c3-4c51-9355-c4d33541283e
+		summarizeBy: none
+		sourceColumn: year_month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column monthly_sales
+		dataType: double
+		isHidden
+		lineageTag: cc7a3c23-7e79-43e5-9a7a-43a45069d762
+		summarizeBy: none
+		sourceColumn: monthly_sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column monthly_transactions
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f22a6140-91ba-476c-abab-2862eee09df3
+		summarizeBy: none
+		sourceColumn: monthly_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column monthly_quantity
+		dataType: double
+		isHidden
+		lineageTag: da697294-b17e-458c-9d77-44ab3c293937
+		summarizeBy: none
+		sourceColumn: monthly_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column monthly_promo_sales
+		dataType: double
+		isHidden
+		lineageTag: 3bf8af05-5aaa-40a3-ad7b-f1d56a7b2cb0
+		summarizeBy: none
+		sourceColumn: monthly_promo_sales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column monthly_promo_transactions
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: df22073f-2e31-4d55-99b1-6020281bf16b
+		summarizeBy: none
+		sourceColumn: monthly_promo_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_flag
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 902c1056-e609-4647-a28a-bd880b5316c7
+		summarizeBy: none
+		sourceColumn: active_flag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactMonthlyActivity = m
+		mode: import
+		source = fnAnalyticsTable("monthly_customer_activity", {{"customer_id", Int64.Type}, {"year_month", type date}, {"monthly_sales", type number}, {"monthly_transactions", Int64.Type}, {"monthly_quantity", type number}, {"monthly_promo_sales", type number}, {"monthly_promo_transactions", Int64.Type}, {"active_flag", Int64.Type}})
+
+	annotation PBI_ResultType = Exception
+

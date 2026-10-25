@@ -1,0 +1,53 @@
+expression StgCustomerSegments = fnAnalyticsTable("customer_segments", {{"customer_id", Int64.Type}, {"segment_id", Int64.Type}, {"segment_name", type text}, {"model_version", type text}})
+	lineageTag: f13bed6c-030d-4ea6-b661-ab20684f9135
+
+	annotation PBI_ResultType = Table
+
+expression StgPromotionMetrics = fnAnalyticsTable("promotion_metrics", {{"customer_id", Int64.Type}, {"promo_baskets", Int64.Type}, {"nonpromo_baskets", Int64.Type}, {"promo_sales", type number}, {"nonpromo_sales", type number}, {"promo_average_basket_value", type number}, {"nonpromo_average_basket_value", type number}, {"promotion_purchase_share", type number}, {"promotion_spend_share", type number}})
+	lineageTag: 3d862679-43b4-46fc-abeb-9f385b297775
+
+	annotation PBI_ResultType = Table
+
+/// PostgreSQL host and port. Set to the gateway-reachable server for scheduled refresh.
+expression pServer = "localhost:5432" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b09f93c8-ef80-562d-bb72-1bd77f8450f4
+
+	annotation PBI_ResultType = Text
+
+/// PostgreSQL database containing the analytics schema.
+expression pDatabase = "fmcg_consumer_growth" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 726c6d11-102a-54a9-9c65-0807f884b848
+
+	annotation PBI_ResultType = Text
+
+/// PostgreSQL for refreshable production import; Snapshot for a portable offline review.
+expression pSourceMode = "PostgreSQL" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true, List={"PostgreSQL", "Snapshot"}, DefaultValue="PostgreSQL"]
+	lineageTag: eb9f89e9-9424-54eb-ae59-6ce8bb6d2121
+
+	annotation PBI_ResultType = Text
+
+/// Used only by Snapshot mode. Configure-Project.ps1 sets this to the extracted project folder.
+expression pSnapshotFolder = "C:\ConsumerGrowth\data\analytics" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 76c41efb-f896-5180-9f1a-15c93b96cd01
+
+	annotation PBI_ResultType = Text
+
+/// Load one analytics table from PostgreSQL or the supplied immutable CSV snapshot. No credentials are stored.
+expression fnAnalyticsTable =
+		(tableName as text, columnTypes as list) as table =>
+		let
+		    Raw = if pSourceMode = "PostgreSQL" then
+		        PostgreSQL.Database(pServer, pDatabase, [CreateNavigationProperties=false]){[Schema="analytics", Item=tableName]}[Data]
+		    else if pSourceMode = "Snapshot" then
+		        Table.PromoteHeaders(Csv.Document(File.Contents(pSnapshotFolder & "/" & tableName & ".csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]), [PromoteAllScalars=true])
+		    else error "pSourceMode must be PostgreSQL or Snapshot",
+		    Selected = Table.SelectColumns(Raw, List.Transform(columnTypes, each _{0})),
+		    Nulls = Table.ReplaceValue(Selected, "\N", null, Replacer.ReplaceValue, Table.ColumnNames(Selected)),
+		    EmptyToNull = Table.ReplaceValue(Nulls, "", null, Replacer.ReplaceValue, Table.ColumnNames(Nulls)),
+		    Typed = Table.TransformColumnTypes(EmptyToNull, columnTypes, "en-US")
+		in
+		    Typed
+	lineageTag: 1ff28ac9-1df0-491a-a150-f501463465a2
+
+	annotation PBI_ResultType = Function
+

@@ -1,0 +1,111 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "Fluent2-CY26SU10",
+      "reportVersionAtImport": {
+        "visual": "2.14.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "ConsumerGrowthLight",
+      "reportVersionAtImport": {
+        "visual": "2.14.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "Fluent2-CY26SU10",
+          "path": "BaseThemes/Fluent2-CY26SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "baskets_background.png",
+          "path": "baskets_background.png",
+          "type": "Image"
+        },
+        {
+          "name": "behavior_background.png",
+          "path": "behavior_background.png",
+          "type": "Image"
+        },
+        {
+          "name": "categories_background.png",
+          "path": "categories_background.png",
+          "type": "Image"
+        },
+        {
+          "name": "ConsumerGrowthLight",
+          "path": "ConsumerGrowthLight",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "growth_background.png",
+          "path": "growth_background.png",
+          "type": "Image"
+        },
+        {
+          "name": "overview_background.png",
+          "path": "overview_background.png",
+          "type": "Image"
+        },
+        {
+          "name": "promotion_background.png",
+          "path": "promotion_background.png",
+          "type": "Image"
+        },
+        {
+          "name": "value_background.png",
+          "path": "value_background.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

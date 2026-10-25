@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Consumer Growth",
+    "description": "Validated retail consumer and promotion analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8f4cd94f-f49e-512e-bcec-6a7c42b89c69"
+  }
+}

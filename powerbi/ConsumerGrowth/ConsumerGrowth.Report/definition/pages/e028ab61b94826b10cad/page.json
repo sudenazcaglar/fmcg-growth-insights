@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "e028ab61b94826b10cad",
+  "displayName": "03 Shopping behavior",
+  "displayOption": "FitToWidth",
+  "height": 1200,
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F4F7FC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'behavior_background.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "behavior_background.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "2da6654f6f0f103133b5",
+      "target": "a06ee482af496d5e323a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "2da6654f6f0f103133b5",
+      "target": "a83212fa6ea2b72d3293",
+      "type": "DataFilter"
+    },
+    {
+      "source": "2da6654f6f0f103133b5",
+      "target": "717e1b5ff94d4a6079df",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a06ee482af496d5e323a",
+      "target": "2da6654f6f0f103133b5",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a06ee482af496d5e323a",
+      "target": "a83212fa6ea2b72d3293",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a06ee482af496d5e323a",
+      "target": "717e1b5ff94d4a6079df",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a83212fa6ea2b72d3293",
+      "target": "2da6654f6f0f103133b5",
+      "type": "NoFilter"
+    },
+    {
+      "source": "a83212fa6ea2b72d3293",
+      "target": "a06ee482af496d5e323a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "a83212fa6ea2b72d3293",
+      "target": "717e1b5ff94d4a6079df",
+      "type": "DataFilter"
+    },
+    {
+      "source": "717e1b5ff94d4a6079df",
+      "target": "2da6654f6f0f103133b5",
+      "type": "NoFilter"
+    },
+    {
+      "source": "717e1b5ff94d4a6079df",
+      "target": "a06ee482af496d5e323a",
+      "type": "DataFilter"
+    },
+    {
+      "source": "717e1b5ff94d4a6079df",
+      "target": "a83212fa6ea2b72d3293",
+      "type": "DataFilter"
+    }
+  ]
+}

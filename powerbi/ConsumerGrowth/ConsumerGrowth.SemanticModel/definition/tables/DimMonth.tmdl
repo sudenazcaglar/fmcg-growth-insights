@@ -1,0 +1,54 @@
+table DimMonth
+	lineageTag: 70244f0e-0dd5-44a9-a5f8-7b59b0b120fc
+
+	column year_month
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 2bca1de6-7351-4411-ab44-98201a1e9833
+		summarizeBy: none
+		sourceColumn: year_month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column relative_month_index
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0b5bd573-7405-4973-9992-8651bbfdd8ba
+		summarizeBy: none
+		sourceColumn: relative_month_index
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column relative_month_label
+		dataType: string
+		lineageTag: c66c258e-07c5-4abf-8dfb-b1ddb64524a4
+		summarizeBy: none
+		sourceColumn: relative_month_label
+		sortByColumn: relative_month_index
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimMonth = m
+		mode: import
+		source =
+				let
+				    Months = Table.Sort(Table.Distinct(Table.SelectColumns(FactMonthlyActivity, {"year_month"})), {{"year_month", Order.Ascending}}),
+				    Indexed = Table.AddIndexColumn(Months, "relative_month_index", 1, 1, Int64.Type),
+				    Labelled = Table.AddColumn(Indexed, "relative_month_label", each "Month " & Text.PadStart(Text.From([relative_month_index]), 2, "0"), type text)
+				in
+				    Labelled
+
+	annotation PBI_ResultType = Table
+

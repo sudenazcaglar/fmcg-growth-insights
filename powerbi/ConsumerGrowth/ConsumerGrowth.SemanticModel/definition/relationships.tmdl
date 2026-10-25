@@ -1,0 +1,16 @@
+relationship 1ec64d07-fa5a-527b-ae76-91ad10745149
+	fromColumn: FactMonthlyActivity.customer_id
+	toColumn: DimCustomer.customer_id
+
+relationship a640c88e-119d-5a31-ac86-b8651d8f51fb
+	fromColumn: FactCustomerCategory.customer_id
+	toColumn: DimCustomer.customer_id
+
+relationship 068a7ca3-88e3-55d8-afcf-84169fa02ef8
+	fromColumn: FactMonthlyActivity.year_month
+	toColumn: DimMonth.year_month
+
+relationship f89ecb81-8aaf-52a4-a43e-5a6bb7e28661
+	fromColumn: FactCustomerCategory.category
+	toColumn: DimCategory.category
+

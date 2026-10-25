@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "423002c43fdd9323a379",
+  "displayName": "06 Basket comparisons",
+  "displayOption": "FitToWidth",
+  "height": 1200,
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F4F7FC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'baskets_background.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "baskets_background.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "c057bdd3017fe29d1ccd",
+      "target": "4f50245fec09370fc9b3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c057bdd3017fe29d1ccd",
+      "target": "26ae91dfe0e32e1f62b9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "c057bdd3017fe29d1ccd",
+      "target": "b258c14b70b33d5a27cd",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4f50245fec09370fc9b3",
+      "target": "c057bdd3017fe29d1ccd",
+      "type": "NoFilter"
+    },
+    {
+      "source": "4f50245fec09370fc9b3",
+      "target": "26ae91dfe0e32e1f62b9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "4f50245fec09370fc9b3",
+      "target": "b258c14b70b33d5a27cd",
+      "type": "DataFilter"
+    },
+    {
+      "source": "26ae91dfe0e32e1f62b9",
+      "target": "c057bdd3017fe29d1ccd",
+      "type": "NoFilter"
+    },
+    {
+      "source": "26ae91dfe0e32e1f62b9",
+      "target": "4f50245fec09370fc9b3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "26ae91dfe0e32e1f62b9",
+      "target": "b258c14b70b33d5a27cd",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b258c14b70b33d5a27cd",
+      "target": "c057bdd3017fe29d1ccd",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b258c14b70b33d5a27cd",
+      "target": "4f50245fec09370fc9b3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b258c14b70b33d5a27cd",
+      "target": "26ae91dfe0e32e1f62b9",
+      "type": "NoFilter"
+    }
+  ]
+}

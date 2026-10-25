@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1420.8899992388151,
+            "y": 29.578649436289027
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "399468ec-c512-4499-932b-62c8a991efac",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1186.8899992388151,
+            "y": 131.07956564131797
+          },
+          "nodeIndex": "DimCategory",
+          "nodeLineageTag": "85ddd064-83ae-48df-b8e9-8d062792685d",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.43572994368458,
+            "y": -29.765176351625442
+          },
+          "nodeIndex": "DimCustomer",
+          "nodeLineageTag": "55913f06-61bc-4e7c-9b57-7022aa135829",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": -41.987699727723566
+          },
+          "nodeIndex": "DimMonth",
+          "nodeLineageTag": "70244f0e-0dd5-44a9-a5f8-7b59b0b120fc",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 902.68375043077731,
+            "y": 9.1572988725780533
+          },
+          "nodeIndex": "FactCustomerCategory",
+          "nodeLineageTag": "b7911f80-91e1-451d-b796-7f143a3d412f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.210382323226,
+            "y": -49.999999999999972
+          },
+          "nodeIndex": "FactMonthlyActivity",
+          "nodeLineageTag": "a16bcadc-c312-4d1b-99f5-be97aae51aa7",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

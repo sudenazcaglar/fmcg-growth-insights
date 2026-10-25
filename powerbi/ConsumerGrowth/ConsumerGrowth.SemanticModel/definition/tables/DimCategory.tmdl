@@ -1,0 +1,41 @@
+table DimCategory
+	lineageTag: 85ddd064-83ae-48df-b8e9-8d062792685d
+
+	column category
+		dataType: string
+		lineageTag: 5e8aca97-a4fd-435f-a401-4cc913cd8533
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_business_merchandise =
+			
+			IF (
+			    DimCategory[category] IN {
+			        "COUPON/MISC ITEMS",
+			        "(CORP USE ONLY)"
+			    },
+			    FALSE (),
+			    TRUE ()
+			)
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a99a96e6-480a-4d7f-8525-9b4053858efb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCategory = m
+		mode: import
+		source =
+				let
+				    Categories = Table.Distinct(Table.SelectColumns(FactCustomerCategory, {"category"})),
+				    NonNull = Table.SelectRows(Categories, each [category] <> null and [category] <> ""),
+				    Sorted = Table.Sort(NonNull, {{"category", Order.Ascending}})
+				in
+				    Sorted
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Consumer Growth",
+    "description": "Consumer value, segments and promotion opportunities"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3f53f3d3-6f30-5c17-9f3a-5a2c69aef7dd"
+  }
+}

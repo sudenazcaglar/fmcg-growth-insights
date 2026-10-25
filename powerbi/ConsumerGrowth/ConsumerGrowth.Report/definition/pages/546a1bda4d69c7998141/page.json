@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "546a1bda4d69c7998141",
+  "displayName": "05 Promotion exposure",
+  "displayOption": "FitToWidth",
+  "height": 1200,
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F4F7FC'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'promotion_background.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "promotion_background.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "25b5013c5d3d8faacaf6",
+      "target": "f8284df6fefd14f2072d",
+      "type": "DataFilter"
+    },
+    {
+      "source": "25b5013c5d3d8faacaf6",
+      "target": "cb20084b0d7cf53911dc",
+      "type": "DataFilter"
+    },
+    {
+      "source": "f8284df6fefd14f2072d",
+      "target": "25b5013c5d3d8faacaf6",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f8284df6fefd14f2072d",
+      "target": "cb20084b0d7cf53911dc",
+      "type": "DataFilter"
+    },
+    {
+      "source": "cb20084b0d7cf53911dc",
+      "target": "25b5013c5d3d8faacaf6",
+      "type": "NoFilter"
+    },
+    {
+      "source": "cb20084b0d7cf53911dc",
+      "target": "f8284df6fefd14f2072d",
+      "type": "DataFilter"
+    }
+  ]
+}

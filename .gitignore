@@ -20,3 +20,27 @@ __pycache__/
 
 # Raw dataset
 data/raw/
+
+# Power BI local settings and data cache
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Local backups and private data copies
+**/.local_backups/
+**/data/raw/
+**/data/database/
+**/data/analytics/
+
+# Office temporary files
+~$*# Power BI local settings and data cache
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Local backups and private data copies
+**/.local_backups/
+**/data/raw/
+**/data/database/
+**/data/analytics/
+
+# Office temporary files
+~$*
