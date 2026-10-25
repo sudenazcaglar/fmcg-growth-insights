@@ -4,7 +4,9 @@ Customer segmentation and promotion analytics to identify retention priorities a
 
 **PostgreSQL · Python · Power BI · Excel · PowerPoint**
 
-**[View the live dashboard][dashboard]** · [Business questions](#the-business-questions) · [Key takeaways](#key-takeaways) · [Workflow](#workflow) · [Analysis files](#analysis-files)
+**[View the live dashboard][dashboard]** · **[Excel workbook](excel/README.md)** · **[PowerPoint presentation](presentation/README.md)**
+
+[Business questions](#the-business-questions) · [Key takeaways](#key-takeaways) · [Workflow](#workflow) · [Analysis files](#analysis-files)
 
 ## Explore the dashboard
 
@@ -88,6 +90,103 @@ Household, basket and product identifiers connect **who buys, what they buy, how
 
 Reported metrics use the validated analytical population; the full sales control total is **$8,057,443.80**.
 
+## Analytical Approach
+
+| Stage | Work completed |
+|---|---|
+| Data preparation | PostgreSQL raw, staging and analytics layers; documented transaction-validity and metric rules |
+| Consumer analysis | Customer value concentration, shopping frequency, basket size, recency and category diversity |
+| Segmentation | K-means candidates with three, four and five clusters; three behavioral segments selected using model diagnostics and business interpretation |
+| Promotion analysis | Basket exposure, promotional-line sales, category comparisons and two exploratory Kruskal–Wallis tests |
+| Communication | Seven-page Power BI report, [Excel validation workbook](excel/README.md) and [executive presentation](presentation/README.md) |
+
+## Analysis files
+
+| Explore | Contents |
+|---|---|
+| [SQL workflow](sql/) | Six scripts covering ingestion, data quality and analytical tables |
+| [Python notebooks](notebooks/) | Consumer behavior, segmentation and promotion analysis |
+| [Tables and validation](outputs/tables/) | Segment profiles, statistical results and metric reconciliation |
+| [Analytical charts](outputs/figures/) | Supporting visual evidence |
+| [Data documentation](data/README.md) | Source files, definitions and analytical rules |
+| [Excel workbook](excel/README.md) | Seven worksheets covering customer analysis, promotion patterns and validation checks · [Download .xlsx](excel/business_validation.xlsx?raw=true) |
+| [PowerPoint presentation](presentation/README.md) | Twelve slides covering the business question, key findings and recommended actions · [Download .pptx](presentation/consumer_growth_executive.pptx?raw=true) |
+
+### Selected analytical outputs
+
+Six examples from the Python analysis show the evidence behind the dashboard and recommendations.
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%" align="center">Purchase frequency and customer value</th>
+      <th width="50%" align="center">Historical customer value and recency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%" align="center" valign="middle">
+        <img src="outputs/figures/02_frequency_vs_customer_value.png" width="100%" alt="Scatter plot of purchase frequency and customer sales value, with logarithmic axes.">
+      </td>
+      <td width="50%" align="center" valign="middle">
+        <img src="outputs/figures/06_historical_value_vs_recency.png" width="100%" alt="Scatter plot of customer sales and days since the last purchase, with 80th-percentile reference lines and a logarithmic sales axis.">
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top">More frequent shopping is associated with higher historical customer sales. Both axes use logarithmic scales.</td>
+      <td width="50%" valign="top">Historical sales are compared with days since the last purchase; dashed lines mark the 80th percentiles.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%" align="center">Average basket value distribution</th>
+      <th width="50%" align="center">Customer sales concentration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%" align="center" valign="middle">
+        <img src="outputs/figures/03_average_basket_value_distribution.png" width="100%" alt="Distribution of customer-level average basket values, with a logarithmic horizontal axis and a median marker.">
+      </td>
+      <td width="50%" align="center" valign="middle">
+        <img src="outputs/figures/01_customer_value_concentration.png" width="100%" alt="Lorenz curve comparing observed customer sales concentration with equal distribution.">
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top">Customer-level average basket values are shown on a logarithmic scale; the dashed line marks the median.</td>
+      <td width="50%" valign="top">The Lorenz curve shows how unevenly sales are distributed across households.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="50%" align="center">Average items per basket by segment</th>
+      <th width="50%" align="center">Segment behavioral profiles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%" align="center" valign="middle">
+        <img src="outputs/figures/12_average_items_per_basket_by_segment.png" width="100%" alt="Box plots comparing customer-level average items per basket across three shopper segments.">
+      </td>
+      <td width="50%" align="center" valign="middle">
+        <img src="outputs/figures/08_final_segment_profile_index.png" width="100%" alt="Six behavioral metrics by segment, indexed to an overall customer mean of 100.">
+      </td>
+    </tr>
+    <tr>
+      <td width="50%" valign="top">Box plots compare customer-level average items per basket, showing differences in typical basket size and variation within each segment.</td>
+      <td width="50%" valign="top">Six metrics are indexed to an overall customer mean of 100. Higher recency means more time since the last purchase.</td>
+    </tr>
+  </tbody>
+</table>
+
+[Browse all 13 analytical figures](outputs/figures/).
+
 ## Key Takeaways
 
 ### 1. A concentrated revenue base makes retention a priority
@@ -120,16 +219,6 @@ These actions are proposals for controlled testing. The historical analysis does
 
 [Read the supporting evidence and recommendations](outputs/insights/03_final_insights_and_recommendations.md).
 
-## Analytical Approach
-
-| Stage | Work completed |
-|---|---|
-| Data preparation | PostgreSQL raw, staging and analytics layers; documented transaction-validity and metric rules |
-| Consumer analysis | Customer value concentration, shopping frequency, basket size, recency and category diversity |
-| Segmentation | K-means candidates with three, four and five clusters; three behavioral segments selected using model diagnostics and business interpretation |
-| Promotion analysis | Basket exposure, promotional-line sales, category comparisons and two exploratory Kruskal–Wallis tests |
-| Communication | Seven-page Power BI report, Excel validation workbook and executive presentation |
-
 ## Workflow
 
 The technical workflow connects the source files to the analytical model, business recommendations and final deliverables in this order.
@@ -147,43 +236,9 @@ The technical workflow connects the source files to the analytical model, busine
 | **09 · Analyze promotion patterns** | Ran [notebook 03](notebooks/03_promotion_analysis.ipynb) to compare exposure, sales shares and basket values by segment and category. Used two exploratory Kruskal–Wallis tests with effect sizes to assess differences. |
 | **10 · Develop recommendations** | Consolidated the evidence into [three final insights](outputs/insights/03_final_insights_and_recommendations.md), each with a target segment, proposed action and evaluation KPI. |
 | **11 · Build the Power BI project** | Connected the analytical tables to an Import model with shared dimensions, two fact tables and four single-direction relationships. Added explicit DAX measures and organized the report into seven pages. |
-| **12 · Reconcile results in Excel** | Compared key sales, basket, segment and promotion metrics with the analytical outputs using formula-based controls and reconciliation checks. |
-| **13 · Prepare the executive presentation** | Developed the final 12-slide presentation around the business problem, analysis, findings and three recommended actions. |
+| **12 · Reconcile results in Excel** | Compared key sales, basket, segment and promotion metrics with the analytical outputs using formula-based controls and reconciliation checks in the [Excel workbook](excel/README.md). |
+| **13 · Prepare the executive presentation** | Developed the final [12-slide presentation](presentation/README.md) around the business problem, analysis, findings and three recommended actions. |
 | **14 · Publish and document** | Published the interactive report and prepared the code, analytical evidence and supporting documentation for portfolio review. |
-
-## Analysis files
-
-| Explore | Contents |
-|---|---|
-| [SQL workflow](sql/) | Six scripts covering ingestion, data quality and analytical tables |
-| [Python notebooks](notebooks/) | Consumer behavior, segmentation and promotion analysis |
-| [Tables and validation](outputs/tables/) | Segment profiles, statistical results and metric reconciliation |
-| [Analytical charts](outputs/figures/) | Supporting visual evidence |
-| [Data documentation](data/README.md) | Source files, definitions and analytical rules |
-
-### Selected analytical outputs
-
-Six examples from the Python analysis show the evidence behind the dashboard and recommendations.
-
-| Purchase frequency and customer value | Historical customer value and recency |
-|---|---|
-| ![Scatter plot of purchase frequency and customer sales value, with logarithmic axes.](outputs/figures/02_frequency_vs_customer_value.png) | ![Scatter plot of customer sales and days since the last purchase, with 80th-percentile reference lines and a logarithmic sales axis.](outputs/figures/06_historical_value_vs_recency.png) |
-| More frequent shopping is associated with higher historical customer sales. Both axes use logarithmic scales. | Historical sales are compared with days since the last purchase; dashed lines mark the 80th percentiles. |
-
-| Average basket value distribution | Average items per basket by segment |
-|---|---|
-| ![Distribution of customer-level average basket values, with a logarithmic horizontal axis and a median marker.](outputs/figures/03_average_basket_value_distribution.png) | ![Box plots comparing customer-level average items per basket across three shopper segments.](outputs/figures/12_average_items_per_basket_by_segment.png) |
-| Customer-level average basket values are shown on a logarithmic scale; the dashed line marks the median. | Box plots compare customer-level average items per basket, showing differences in typical basket size and variation within each segment. |
-
-| Customer sales concentration | Segment behavioral profiles |
-|---|---|
-| ![Lorenz curve comparing observed customer sales concentration with equal distribution.](outputs/figures/01_customer_value_concentration.png) | ![Six behavioral metrics by segment, indexed to an overall customer mean of 100.](outputs/figures/08_final_segment_profile_index.png) |
-| The Lorenz curve shows how unevenly sales are distributed across households. | Six metrics are indexed to an overall customer mean of 100. Higher recency means more time since the last purchase. |
-
-[Browse all 13 analytical figures](outputs/figures/).
-
-<!-- Add direct links to the approved PBIP project, Excel workbook and final
-12-slide presentation after the files are committed to the repository. -->
 
 ## Reproducing the Analysis
 
