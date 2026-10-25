@@ -4,7 +4,7 @@
 
 Seven worksheets combine customer and promotion analysis across 2,500 households with formula-based checks against the project's SQL and Python reference totals. Three analytical views present the findings, while four validation sheets make the supporting calculations available for review.
 
-**[Download Excel](business_validation.xlsx?raw=true)** · [View the live dashboard][dashboard] · [Executive presentation](../presentation/README.md) · [Project overview](../README.md)
+**[Download Excel](https://raw.githubusercontent.com/sudenazcaglar/fmcg-growth-insights/main/excel/business_validation.xlsx)** · [View the live dashboard][dashboard] · [Executive presentation](../presentation/README.md) · [Project overview](../README.md)
 
 ## Explore the workbook
 
