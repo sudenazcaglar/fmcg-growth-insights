@@ -109,8 +109,8 @@ Reported metrics use the validated analytical population; the full sales control
 | [Tables and validation](outputs/tables/) | Segment profiles, statistical results and metric reconciliation |
 | [Analytical charts](outputs/figures/) | Supporting visual evidence |
 | [Data documentation](data/README.md) | Source files, definitions and analytical rules |
-| [Excel workbook](excel/README.md) | Seven worksheets covering customer analysis, promotion patterns and validation checks · [Download .xlsx](excel/business_validation.xlsx?raw=true) |
-| [PowerPoint presentation](presentation/README.md) | Twelve slides covering the business question, key findings and recommended actions · [Download .pptx](presentation/consumer_growth_executive.pptx?raw=true) |
+| [Excel workbook](excel/README.md) | Seven worksheets covering customer analysis, promotion patterns and validation checks · [Download .xlsx](https://raw.githubusercontent.com/sudenazcaglar/fmcg-growth-insights/main/excel/business_validation.xlsx) |
+| [PowerPoint presentation](presentation/README.md) | Twelve slides covering the business question, key findings and recommended actions · [Download .pptx](https://raw.githubusercontent.com/sudenazcaglar/fmcg-growth-insights/main/presentation/consumer_growth_executive.pptx) |
 
 ### Selected analytical outputs
 
